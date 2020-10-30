@@ -1,0 +1,23 @@
+{
+  "name": "wwd/Bytedance",
+  "description": "字节跳动小程序接口",
+  "keywords": [
+    "Bytedance",
+    "sdk"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "ryan",
+      "email": "1458790210@qq.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "Bytedance\\": "src/Bytedance"
+    }
+  }
+}
