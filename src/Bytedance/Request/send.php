@@ -5,16 +5,21 @@ namespace Bytedance\Request;
 class send
 {
     private $bizContent;
-    private $apiParas = array();
+    private $apiParas = [];
 
     public function getService()
     {
         return '/api/apps/game/template/send';
     }
 
+    public function getType()
+    {
+        return 'POST';
+    }
+
     public function setBizContent($bizContent)
     {
-        $this->bizContent = $bizContent;
+        $this->bizContent              = $bizContent;
         $this->apiParas['biz_content'] = $bizContent;
     }
 

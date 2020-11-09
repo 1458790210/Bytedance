@@ -5,16 +5,21 @@ namespace Bytedance\Request;
 class removeUserStorage
 {
     private $bizContent;
-    private $apiParas = array();
+    private $apiParas = [];
 
     public function getService()
     {
         return '/api/apps/remove_user_storage';
     }
 
+    public function getType()
+    {
+        return 'POST';
+    }
+
     public function setBizContent($bizContent)
     {
-        $this->bizContent = $bizContent;
+        $this->bizContent              = $bizContent;
         $this->apiParas['biz_content'] = $bizContent;
     }
 
