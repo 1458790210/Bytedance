@@ -15,7 +15,7 @@ class Adapter
      * The request public headers
      * @var array
      */
-    private $headers = array();
+    private $headers = [];
 
     /**
      * The connection timeout time, which is 10 seconds by default
@@ -32,17 +32,17 @@ class Adapter
     /**
      * The curl options
      */
-    private $curlOpts = array();
+    private $curlOpts = [];
 
     /**
      * HttpClient
      * @param array $headers HTTP header
      */
-    public function __construct($headers = array(), $connectTimeout = 10000, $socketTimeout = 120000)
+    public function __construct($headers = [], $connectTimeout = 10000, $socketTimeout = 120000)
     {
-        $this->headers = $headers;
+        $this->headers        = $headers;
         $this->connectTimeout = $connectTimeout;
-        $this->socketTimeout = $socketTimeout;
+        $this->socketTimeout  = $socketTimeout;
     }
 
     /**
@@ -97,17 +97,17 @@ class Adapter
         }
     }
 
-    public function get($url, $params = array(), $headers = array())
+    public function get($url, $data = [], $params = [], $headers = [])
     {
-        return $this->request('GET', $url, $params, $headers);
+        return $this->request('GET', $url, $data, $params, $headers);
     }
 
-    public function post($url, $data = array(), $params = array(), $headers = array())
+    public function post($url, $data = [], $params = [], $headers = [])
     {
         return $this->request('POST', $url, $data, $params, $headers);
     }
 
-    public function request($method, $url, $data, $params = array(), $headers = array())
+    public function request($method, $url, $data, $params = [], $headers = [])
     {
         $request = new Request($method, $url, $data, $params, $headers);
         $request->prepare();
@@ -121,11 +121,11 @@ class Adapter
         $ch = curl_init();
         $this->prepare($ch);
 
-        $url = $request->url;
+        $url    = $request->url;
         $method = $request->method;
 
         $headers = array_merge($this->headers, $request->headers);
-        $body = $request->body;
+        $body    = $request->body;
 
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
@@ -152,7 +152,7 @@ class Adapter
         }
 
         $content = curl_exec($ch);
-        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $code    = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
         if ($code === 0) {
             throw new RequestException(curl_error($ch));
@@ -174,7 +174,7 @@ class Adapter
 
     private function buildHeaders($headers)
     {
-        $result = array();
+        $result = [];
         foreach ($headers as $k => $v) {
             $result[] = sprintf('%s: %s', $k, $v);
         }

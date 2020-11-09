@@ -18,12 +18,7 @@ class TestClient
 
     public function test()
     {
-        $init = [
-            'apiKey'    => '',
-            'apiSecret' => ''
-        ];
-        $forms = ['args' => ''];
-        Bytedance\Http\Config::$config = $init;//直接添加配置 或写在env中自动加载
+        $forms = ['' => ''];
         $r = new Bytedance\Request\getAccessToken();
         $v = $this->client($r, $forms);
         return $v;

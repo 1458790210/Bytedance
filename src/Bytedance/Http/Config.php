@@ -9,7 +9,7 @@ class Config
 
     public static function getConfig()
     {
-        if (is_array(self::$config)) {
+        if (!empty(self::$config)) {
             return self::$config;
         }
 
@@ -30,8 +30,7 @@ class Config
             }
         }
 
-        self::$config = ['apiKey' => getenv('ACCESS_KEY'), 'apiSecret' => getenv('SECRET_KEY')];
-
+        self::$config = ['apiKey' => getenv('apiKey'), 'apiSecret' => getenv('apiSecret')];
         return self::$config;
     }
 }

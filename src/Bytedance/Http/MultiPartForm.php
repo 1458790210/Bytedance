@@ -4,9 +4,9 @@ namespace Bytedance\Http;
 
 class MultiPartForm
 {
-    private $forms = array();
+    public $forms = [];
 
-    private $files = array();
+    private $files = [];
 
     private $boundary = '';
 
@@ -28,7 +28,7 @@ class MultiPartForm
         $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
         $result = '';
-        $max = strlen($chars) - 1;
+        $max    = strlen($chars) - 1;
         for ($i = 0; $i < 15; $i++) {
             $result .= $chars[rand(0, $max)];
         }
@@ -65,7 +65,7 @@ class MultiPartForm
 
     public function __toString()
     {
-        $parts = array();
+        $parts         = [];
         $part_boundary = "--" . $this->boundary;
 
         foreach ($this->forms as list($key, $val)) {
@@ -79,12 +79,12 @@ class MultiPartForm
                 sprintf('Content-Disposition: file; name="%s"; filename="%s"', $field, $name),
                 sprintf('Content-Type: %s', $mimetype),
                 '',
-                $content
+                $content,
             ];
             array_push($parts, $one);
         }
 
-        $parts = array_map(function ($val) {
+        $parts        = array_map(function ($val) {
             return join($val, "\r\n");
         }, $parts);
         $end_boundary = $part_boundary . "--";

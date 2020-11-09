@@ -12,6 +12,11 @@ class getAccessToken
         return '/api/apps/token';
     }
 
+    public function getType()
+    {
+        return 'GET';
+    }
+
     public function setBizContent($bizContent)
     {
         $this->bizContent = $bizContent;

@@ -99,8 +99,15 @@ class Request
 
     private function buildUrl()
     {
-        if (!empty($this->params)) {
-            $str = http_build_query($this->params);
+        $params = [];
+        foreach ($this->params as $param){
+            if ($param[0]){
+                $params[$param[0]] = $param[1];
+            }
+        }
+
+        if (!empty($params)) {
+            $str = http_build_query($params);
             $url = $this->url;
             $this->url = $url . (strpos($url, '?') === false ? '?' : '&') . $str;
         }
@@ -124,17 +131,19 @@ class Request
         } else {
             $body = (string) $this->data;
         }
-
         $this->body = $body;
     }
 
     private function buildHeader()
     {
         $headers = array();
-        foreach ($this->headers as $key => $value) {
-            $key = ucwords($key);
-            $headers[$key] = $value;
+        if ($this->headers){
+            foreach ($this->headers as $key => $value) {
+                $key = ucwords($key);
+                $headers[$key] = $value;
+            }
         }
+
         $headers['User-Agent'] = $this->useragent;
         if (!empty($this->ctype)) {
             $headers['Content-Type'] = $this->ctype;
