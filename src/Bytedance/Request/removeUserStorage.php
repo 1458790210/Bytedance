@@ -16,6 +16,6 @@ class removeUserStorage
 
     public function getHeaders()
     {
-        return [];
+        return ['Content-Type' => 'application/json'];
     }
 }

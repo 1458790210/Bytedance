@@ -40,7 +40,7 @@ class TestClient
             'openid'       => '',
             'signature'    => '',
             'sig_method'   => 'hmac_sha256',
-            'kv_list'      => [],
+            'kv_list'      => [['key' => 'test', 'value' => ['ttgame' => ['score' => 1]]]],
         ];
         $r     = new Bytedance\Request\setUserStorage();
         $v     = $this->client($r, $forms);
@@ -54,7 +54,7 @@ class TestClient
             'openid'       => '',
             'signature'    => '',
             'sig_method'   => 'hmac_sha256',
-            'kv_list'      => [],
+            'kv_list'      => ["test"],
         ];
         $r     = new Bytedance\Request\removeUserStorage();
         $v     = $this->client($r, $forms);
