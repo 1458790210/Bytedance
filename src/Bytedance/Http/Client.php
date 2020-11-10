@@ -58,24 +58,19 @@ class Client
     {
         $forms = new MultiPartForm();
 
-        foreach ($options as $key => $value) {
-            if (@is_file($value)) {
-                $forms->addFile($key, $value, file_get_contents($value));
-            } else {
-                $forms->addForm($key, $value);
-            }
-        }
+        $forms->addForm($options);
 
         $adapter = $this->getAdapter();
-        //接口名
+
         $apiMethodName = $request->getService();
 
         $url   = $this->generateUrl($apiMethodName);
+
+        $this->setHeaders($request->getHeaders());
+
         $quest = $request->getType();
 
-        $this->headers = array_merge($this->headers, $request->getHeaders());
-
-        return $adapter->$quest($url, $forms, $forms->forms, $this->headers);
+        return $adapter->$quest($url, $forms, $this->headers);
     }
 
     public function generateUrl($path)
@@ -95,7 +90,7 @@ class Client
 
     public function setHeaders($headers)
     {
-        $this->headers = $headers;
+        $this->headers = array_merge($this->headers, $headers);
     }
 
     public function setSslVerification($ssl)

@@ -97,14 +97,14 @@ class Adapter
         }
     }
 
-    public function get($url, $data = [], $params = [], $headers = [])
+    public function get($url, $params = [], $headers = [])
     {
-        return $this->request('GET', $url, $data, $params, $headers);
+        return $this->request('GET', $url, [], $params, $headers);
     }
 
-    public function post($url, $data = [], $params = [], $headers = [])
+    public function post($url, $data = [], $headers = [])
     {
-        return $this->request('POST', $url, $data, $params, $headers);
+        return $this->request('POST', $url, $data, [], $headers);
     }
 
     public function request($method, $url, $data, $params = [], $headers = [])

@@ -127,7 +127,5 @@ class TestClient
 }
 
 $tester = new TestClient();
-//$resp   = $tester->getAccessToken();
-//var_dump($resp);
-$resp = $tester->antidirt();
+$resp   = $tester->getAccessToken();
 var_dump($resp);
