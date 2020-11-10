@@ -10,4 +10,3 @@ function classLoader($class)
 }
 
 spl_autoload_register('classLoader');
-
