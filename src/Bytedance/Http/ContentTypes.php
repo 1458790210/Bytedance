@@ -2,7 +2,7 @@
 
 namespace Bytedance\Http;
 
-class ContentType
+class ContentTypes
 {
 
     const JSON = 'application/json';

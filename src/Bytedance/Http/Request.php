@@ -115,21 +115,26 @@ class Request
 
     private function buildBody()
     {
-        $body = '';
-        if (is_array($this->data)) {
+        $data = [];
+        foreach ($this->data->forms as $v) {
+            if ($v[0]) {
+                $data[$v[0]] = $v[1];
+            }
+        }
+        if (is_array($data)) {
             switch ($this->ctype) {
-                case ContentType::JSON:
-                    $body = json_encode($this->data);
+                case ContentTypes::JSON:
+                    $body = json_encode($data);
                     break;
-                case ContentType::FORM:
-                    $body = http_build_query($this->data);
+                case ContentTypes::FORM:
+                    $body = http_build_query($data);
                     break;
                 default:
-                    $body = (string) $this->data;
+                    $body = (string)$this->data;
                     break;
             }
         } else {
-            $body = (string) $this->data;
+            $body = (string)$this->data;
         }
         $this->body = $body;
     }

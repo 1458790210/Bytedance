@@ -4,9 +4,6 @@ namespace Bytedance\Request;
 
 class image
 {
-    private $bizContent;
-    private $apiParas = [];
-
     public function getService()
     {
         return '/api/v2/tags/image/';
@@ -17,20 +14,8 @@ class image
         return 'POST';
     }
 
-    public function setBizContent($bizContent)
+    public function getHeaders()
     {
-        $this->bizContent              = $bizContent;
-        $this->apiParas['biz_content'] = $bizContent;
+        return ['Content-Type' => 'application/json'];
     }
-
-    public function getBizContent()
-    {
-        return $this->bizContent;
-    }
-
-    public function getApiParas()
-    {
-        return $this->apiParas;
-    }
-
 }

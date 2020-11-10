@@ -19,28 +19,6 @@ class MultiPartForm
         if (!empty($files)) {
             $this->files = $files;
         }
-
-        $this->boundary = $this->chooseBoundary();
-    }
-
-    public function chooseBoundary()
-    {
-        $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-
-        $result = '';
-        $max    = strlen($chars) - 1;
-        for ($i = 0; $i < 15; $i++) {
-            $result .= $chars[rand(0, $max)];
-        }
-
-        $boundary = sprintf('%s%s%s', '------', 'PhplibFormBoundary', $result);
-
-        return $boundary;
-    }
-
-    public function getContentType()
-    {
-        return sprintf('multipart/form-data; boundary=%s', $this->boundary);
     }
 
     public function addForm($name, $value)

@@ -4,9 +4,6 @@ namespace Bytedance\Request;
 
 class code2Session
 {
-    private $bizContent;
-    private $apiParas = [];
-
     public function getService()
     {
         return '/api/apps/jscode2session';
@@ -17,20 +14,8 @@ class code2Session
         return 'GET';
     }
 
-    public function setBizContent($bizContent)
+    public function getHeaders()
     {
-        $this->bizContent              = $bizContent;
-        $this->apiParas['biz_content'] = $bizContent;
+        return [];
     }
-
-    public function getBizContent()
-    {
-        return $this->bizContent;
-    }
-
-    public function getApiParas()
-    {
-        return $this->apiParas;
-    }
-
 }

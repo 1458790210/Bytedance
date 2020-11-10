@@ -168,7 +168,11 @@ class Adapter
      */
     public function processResponse($content, $code)
     {
-        $body = json_decode($content, true);
+        if (is_string($content)){
+            $body = $content;
+        }else{
+            $body = json_decode($content, true);
+        }
         return new Response(null, $body, $code);
     }
 
