@@ -2,20 +2,20 @@
 
 namespace Bytedance\Request;
 
-class setUserStorage
+class Code2Session
 {
     public function getService()
     {
-        return '/api/apps/set_user_storage';
+        return '/api/apps/jscode2session';
     }
 
     public function getType()
     {
-        return 'POST';
+        return 'GET';
     }
 
     public function getHeaders()
     {
-        return ['Content-Type' => 'application/json'];
+        return [];
     }
 }

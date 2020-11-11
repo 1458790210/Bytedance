@@ -2,20 +2,20 @@
 
 namespace Bytedance\Request;
 
-class getAccessToken
+class RemoveUserStorage
 {
     public function getService()
     {
-        return '/api/apps/token';
+        return '/api/apps/remove_user_storage';
     }
 
     public function getType()
     {
-        return 'GET';
+        return 'POST';
     }
 
     public function getHeaders()
     {
-        return [];
+        return ['Content-Type' => 'application/json'];
     }
 }

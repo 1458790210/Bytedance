@@ -2,11 +2,11 @@
 
 namespace Bytedance\Request;
 
-class antidirt
+class Send
 {
     public function getService()
     {
-        return '/api/v2/tags/text/antidirt';
+        return '/api/apps/game/template/send';
     }
 
     public function getType()

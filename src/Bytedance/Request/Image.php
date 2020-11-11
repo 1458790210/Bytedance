@@ -2,20 +2,20 @@
 
 namespace Bytedance\Request;
 
-class code2Session
+class Image
 {
     public function getService()
     {
-        return '/api/apps/jscode2session';
+        return '/api/v2/tags/image/';
     }
 
     public function getType()
     {
-        return 'GET';
+        return 'POST';
     }
 
     public function getHeaders()
     {
-        return [];
+        return ['Content-Type' => 'application/json'];
     }
 }

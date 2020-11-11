@@ -2,11 +2,11 @@
 
 namespace Bytedance\Request;
 
-class removeUserStorage
+class CreateQRCode
 {
     public function getService()
     {
-        return '/api/apps/remove_user_storage';
+        return '/api/apps/qrcode';
     }
 
     public function getType()

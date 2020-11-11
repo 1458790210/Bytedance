@@ -2,11 +2,11 @@
 
 namespace Bytedance\Request;
 
-class createQRCode
+class Antidirt
 {
     public function getService()
     {
-        return '/api/apps/qrcode';
+        return '/api/v2/tags/text/antidirt';
     }
 
     public function getType()

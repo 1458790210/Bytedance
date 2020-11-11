@@ -2,11 +2,11 @@
 
 namespace Bytedance\Request;
 
-class send
+class Notify
 {
     public function getService()
     {
-        return '/api/apps/game/template/send';
+        return '/api/apps/subscribe_notification/developer/v1/notify';
     }
 
     public function getType()

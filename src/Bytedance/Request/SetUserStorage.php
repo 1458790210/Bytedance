@@ -2,11 +2,11 @@
 
 namespace Bytedance\Request;
 
-class notify
+class SetUserStorage
 {
     public function getService()
     {
-        return '/api/apps/subscribe_notification/developer/v1/notify';
+        return '/api/apps/set_user_storage';
     }
 
     public function getType()

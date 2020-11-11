@@ -2,20 +2,20 @@
 
 namespace Bytedance\Request;
 
-class image
+class GetAccessToken
 {
     public function getService()
     {
-        return '/api/v2/tags/image/';
+        return '/api/apps/token';
     }
 
     public function getType()
     {
-        return 'POST';
+        return 'GET';
     }
 
     public function getHeaders()
     {
-        return ['Content-Type' => 'application/json'];
+        return [];
     }
 }

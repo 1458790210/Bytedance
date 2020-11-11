@@ -15,7 +15,7 @@ class TestClient
 
     public function getAccessToken()
     {
-        $r     = new Bytedance\Request\getAccessToken();
+        $r     = new Bytedance\Request\GetAccessToken();
         $forms = [
             'appid'      => '',
             'secret'     => '',
@@ -28,7 +28,7 @@ class TestClient
     public function code2Session()
     {
         $forms = ['code' => '', 'anonymous_code' => ''];
-        $r     = new Bytedance\Request\code2Session();
+        $r     = new Bytedance\Request\Code2Session();
         $v     = $this->client($r, $forms);
         return $v;
     }
@@ -42,7 +42,7 @@ class TestClient
             'sig_method'   => 'hmac_sha256',
             'kv_list'      => [['key' => 'test', 'value' => ['ttgame' => ['score' => 1]]]],
         ];
-        $r     = new Bytedance\Request\setUserStorage();
+        $r     = new Bytedance\Request\SetUserStorage();
         $v     = $this->client($r, $forms);
         return $v;
     }
@@ -56,7 +56,7 @@ class TestClient
             'sig_method'   => 'hmac_sha256',
             'kv_list'      => ["test"],
         ];
-        $r     = new Bytedance\Request\removeUserStorage();
+        $r     = new Bytedance\Request\RemoveUserStorage();
         $v     = $this->client($r, $forms);
         return $v;
     }
@@ -72,7 +72,7 @@ class TestClient
             'background'   => ['r' => 255, 'g' => 255, 'b' => 255],
             'set_icon'     => false,
         ];
-        $r     = new Bytedance\Request\createQRCode();
+        $r     = new Bytedance\Request\CreateQRCode();
         $v     = $this->client($r, $forms);
         return $v;
     }
@@ -88,7 +88,7 @@ class TestClient
         $headers = [
             'X-Token' => '',
         ];
-        $r       = new Bytedance\Request\image();
+        $r       = new Bytedance\Request\Image();
         $v       = $this->client($r, $forms, $headers);
         return $v;
     }
@@ -104,7 +104,7 @@ class TestClient
             'X-Token' => '',
         ];
 
-        $r = new Bytedance\Request\antidirt();
+        $r = new Bytedance\Request\Antidirt();
         $v = $this->client($r, $forms, $headers);
         return $v;
     }
@@ -120,7 +120,7 @@ class TestClient
             'page'         => 'pages/index?a=b',
         ];
 
-        $r = new Bytedance\Request\notify();
+        $r = new Bytedance\Request\Notify();
         $v = $this->client($r, $forms);
         return $v;
     }
