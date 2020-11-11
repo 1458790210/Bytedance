@@ -7,5 +7,5 @@
 
 # 安装
 ~~~
-composer require wwd/bytedance dev-master
+composer require wwd/bytedance 
 ~~~
