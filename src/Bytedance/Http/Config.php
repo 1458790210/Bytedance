@@ -9,7 +9,7 @@ class Config
 
     public static function getConfig()
     {
-        if (!empty(self::$config)) {
+        if (!empty(self::$config['apiKey'])) {
             return self::$config;
         }
 
