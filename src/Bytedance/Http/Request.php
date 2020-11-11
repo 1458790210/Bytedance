@@ -99,31 +99,35 @@ class Request
 
     private function buildUrl()
     {
-        if (!empty($this->params->forms)) {
-            $str = http_build_query($this->params->forms);
-            $url = $this->url;
-            $this->url = $url . (strpos($url, '?') === false ? '?' : '&') . $str;
+        if ($this->params) {
+            if (!empty($this->params->forms)) {
+                $str       = http_build_query($this->params->forms);
+                $url       = $this->url;
+                $this->url = $url . (strpos($url, '?') === false ? '?' : '&') . $str;
+            }
         }
     }
 
     private function buildBody()
     {
-        if (is_array($this->data->forms)) {
-            switch ($this->ctype) {
-                case ContentTypes::JSON:
-                    $body = json_encode($this->data->forms);
-                    break;
-                case ContentTypes::FORM:
-                    $body = http_build_query($this->data->forms);
-                    break;
-                default:
-                    $body = (string)$this->data->forms;
-                    break;
+        if ($this->data){
+            if (!empty($this->data->forms)) {
+                switch ($this->ctype) {
+                    case ContentTypes::JSON:
+                        $body = json_encode($this->data->forms);
+                        break;
+                    case ContentTypes::FORM:
+                        $body = http_build_query($this->data->forms);
+                        break;
+                    default:
+                        $body = (string)$this->data->forms;
+                        break;
+                }
+            } else {
+                $body = (string)$this->data->forms;
             }
-        } else {
-            $body = (string)$this->data->forms;
+            $this->body = $body;
         }
-        $this->body = $body;
     }
 
     private function buildHeader()
