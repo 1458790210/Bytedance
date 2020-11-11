@@ -44,14 +44,14 @@ class Request
      */
     public $useragent = 'api/request';
 
-    public function __construct($method, $url, $data, $params = array(), $headers = array())
+    public function __construct($method, $url, $data, $params = [], $headers = [])
     {
-        $this->url = $url;
-        $this->params = $params;
-        $this->method = strtoupper($method);
+        $this->url     = $url;
+        $this->params  = $params;
+        $this->method  = strtoupper($method);
         $this->headers = $headers;
-        $this->data = $data;
-        $this->ctype = $headers['Content-Type'];
+        $this->data    = $data;
+        $this->ctype   = $headers['Content-Type'] ?? null;
     }
 
     public function addHeader($key, $value)
@@ -110,7 +110,7 @@ class Request
 
     private function buildBody()
     {
-        if ($this->data){
+        if ($this->data) {
             if (!empty($this->data->forms)) {
                 switch ($this->ctype) {
                     case ContentTypes::JSON:
@@ -132,10 +132,10 @@ class Request
 
     private function buildHeader()
     {
-        $headers = array();
-        if ($this->headers){
+        $headers = [];
+        if ($this->headers) {
             foreach ($this->headers as $key => $value) {
-                $key = ucwords($key);
+                $key           = ucwords($key);
                 $headers[$key] = $value;
             }
         }
